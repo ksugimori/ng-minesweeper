@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import "../variables.scss";
+
+header {
+  background-color: $main-color;
+  color: #fff;
+  padding: 10px 10px 0 10px;
+
+  h1 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      display: block;
+      width: 6em;
+      height: 2em;
+      line-height: 2em;
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+
+      &.active,
+      &:hover {
+        color: $secondary-color;
+        background-color: #fff;
+      }
+    }
+  }
+}
