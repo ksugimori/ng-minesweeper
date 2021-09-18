@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageComponent } from './main-page/main-page.component';
-import { PlayPageComponent } from './play-page/play-page.component';
-import { SettingPageComponent } from './setting-page/setting-page.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { PlayPageComponent } from './pages/play-page/play-page.component';
+import { SettingPageComponent } from './pages/setting-page/setting-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
