@@ -37,6 +37,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/ng-minesweeper",
+              "deployUrl": "/ng-minesweeper/",
               "budgets": [
                 {
                   "type": "initial",
