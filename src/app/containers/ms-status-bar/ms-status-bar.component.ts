@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from 'src/app/game.service';
 
 @Component({
   selector: 'app-ms-status-bar',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MsStatusBarComponent implements OnInit {
 
-  // TODO: Game オブジェクトから取得？
-  public mineCount = 10;
-  public time = 123;
+  public get mineCount(): number {
+    return this.gameService.getGame().minesCount;
+  }
 
-  constructor() { }
+  public get time(): number {
+    return this.gameService.getGame().time;
+  }
+
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
   }
