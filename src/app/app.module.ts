@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingPageComponent } from './pages/setting-page/setting-page.component';
 import { PlayPageComponent } from './pages/play-page/play-page.component';
+import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     SettingPageComponent,
-    PlayPageComponent
+    PlayPageComponent,
+    MsStatusBarComponent
   ],
   imports: [
     BrowserModule,
