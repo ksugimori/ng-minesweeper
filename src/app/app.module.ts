@@ -7,6 +7,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingPageComponent } from './pages/setting-page/setting-page.component';
 import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.component';
+import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.c
     MainPageComponent,
     SettingPageComponent,
     PlayPageComponent,
-    MsStatusBarComponent
+    MsStatusBarComponent,
+    MsCounterComponent
   ],
   imports: [
     BrowserModule,

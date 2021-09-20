@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MsStatusBarComponent implements OnInit {
 
+  // TODO: Game オブジェクトから取得？
+  public mineCount = 10;
+  public time = 123;
+
   constructor() { }
 
   ngOnInit(): void {
