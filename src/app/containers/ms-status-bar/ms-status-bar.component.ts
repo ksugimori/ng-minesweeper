@@ -9,11 +9,11 @@ import { GameService } from 'src/app/game.service';
 export class MsStatusBarComponent implements OnInit {
 
   public get mineCount(): number {
-    return this.gameService.getGame().minesCount;
+    return this.gameService.getGame().closedCount;
   }
 
   public get time(): number {
-    return this.gameService.getGame().time;
+    return this.gameService.getGame().playTime;
   }
 
   constructor(private gameService: GameService) { }
