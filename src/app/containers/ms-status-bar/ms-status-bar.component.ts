@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from 'src/app/game.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { GameService } from 'src/app/game.service';
   templateUrl: './ms-status-bar.component.html',
   styleUrls: ['./ms-status-bar.component.scss']
 })
-export class MsStatusBarComponent implements OnInit {
+export class MsStatusBarComponent  {
 
   public get mineCount(): number {
     return this.gameService.getGame().closedCount;
@@ -17,9 +17,6 @@ export class MsStatusBarComponent implements OnInit {
   }
 
   constructor(private gameService: GameService) { }
-
-  ngOnInit(): void {
-  }
 
   onClickButton(): void {
     alert('clicked!!!!');

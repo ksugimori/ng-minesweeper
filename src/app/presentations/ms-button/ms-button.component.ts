@@ -1,19 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ms-button',
   templateUrl: './ms-button.component.html',
   styleUrls: ['./ms-button.component.scss']
 })
-export class MsButtonComponent implements OnInit {
+export class MsButtonComponent  {
 
   /** ボタンクリックイベント */
   @Output() clickButton = new EventEmitter<void>();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   /**
    * ボタンクリック時のイベントを発火する。
