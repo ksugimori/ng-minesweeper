@@ -8,6 +8,7 @@ import { SettingPageComponent } from './pages/setting-page/setting-page.componen
 import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.component';
 import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
+import { MsButtonComponent } from './presentations/ms-button/ms-button.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MsCounterComponent } from './presentations/ms-counter/ms-counter.compon
     SettingPageComponent,
     PlayPageComponent,
     MsStatusBarComponent,
-    MsCounterComponent
+    MsCounterComponent,
+    MsButtonComponent
   ],
   imports: [
     BrowserModule,

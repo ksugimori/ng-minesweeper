@@ -16,4 +16,7 @@ export class MsStatusBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickButton(): void {
+    alert('clicked!!!!');
+  }
 }
