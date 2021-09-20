@@ -297,4 +297,60 @@ describe('Game', () => {
       expect(game.isLose()).toBeTruthy()
     })
   })
+
+  describe('#doOpen', () => {
+    it('枠外の座標の場合は何もせず終了すること', () => {
+      const game = initGame(2, 2, Point.of(0, 0), Point.of(1, 1))
+
+      game.doOpen(Point.of(9, 9))
+
+      expect(game.closedCount).toBe(4)
+    })
+
+    it('フラグが立っているセルの場合は何もせず終了すること', () => {
+      const game = initGame(2, 2, Point.of(0, 0), Point.of(1, 1))
+
+      game.doFlag(Point.of(0, 0))
+      game.doOpen(Point.of(0, 0))
+
+      expect(game.closedCount).toBe(4)
+    })
+
+    it('セルが開けること', () => {
+      // |*| |
+      // | |*|
+      const game = initGame(2, 2, Point.of(0, 0), Point.of(1, 1))
+
+      game.open(1, 0)
+      game.doOpen(Point.of(0, 1))
+
+      expect(game.closedCount).toBe(2)
+    })
+
+    it('既に開いているセルで、周囲のフラグ数=count の場合は残りのセルが開かれること', () => {
+      // |*|*|1|
+      // |2|2|1|
+      const game = initGame(3, 2, Point.of(0, 0), Point.of(1, 0))
+
+      game.open(2, 0)
+      expect(game.closedCount).toBe(5)
+
+      game.flag(1, 0)
+      game.doOpen(Point.of(2, 0))
+      expect(game.closedCount).toBe(3)
+    })
+  })
+
+  describe('#doFlag', () => {
+    it('枠外の座標の場合は何もせず終了すること', () => {
+      const game = initGame(2, 2, Point.of(0, 0), Point.of(1, 1))
+
+      game.open(1, 0)
+      game.doFlag(Point.of(0, 0))
+      expect(game.flagCount).toBe(1)
+
+      game.doFlag(Point.of(9, 9))
+      expect(game.flagCount).toBe(1)
+    })
+  })
 })

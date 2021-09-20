@@ -2,12 +2,18 @@
  * 時間計測用のクラス
  */
 export class StopWatch {
+  /** プレイ時間 */
   public playTime: number;
 
+  /** 開始日時（unixtime） */
   public startTime?: number;
 
+  /** カウントアップのタイマー */
   private timer?: number;
 
+  /**
+   * コンストラクタ
+   */
   constructor() {
     this.playTime = 0
     this.startTime = undefined;
@@ -22,11 +28,8 @@ export class StopWatch {
   start() {
     this.startTime = Date.now()
     this.timer = window.setInterval(() => {
-      if (this.startTime) {
-        this.playTime = Math.floor((Date.now() - this.startTime) / 1000)
-      } else {
-        this.playTime = 0;
-      }
+      const msec = this.startTime ? Date.now() - this.startTime : 0
+      this.playTime = Math.floor(msec / 1000)
     }, 1000)
   }
 

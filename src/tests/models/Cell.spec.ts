@@ -113,4 +113,82 @@ describe('Cell', () => {
       expect(cell.isEmpty).toBeFalsy()
     })
   })
+
+  describe('#countString', () => {
+    it('count=0 のときは空白文字になること', () => {
+      const cell = new Cell()
+      cell.count = 0
+
+      expect(cell.countString).toEqual('')
+    })
+
+    it('count=1...9 のときはそのまま文字になること', () => {
+      const cell = new Cell()
+
+      cell.count = 1;
+      expect(cell.countString).toEqual('1')
+
+      cell.count = 2;
+      expect(cell.countString).toEqual('2')
+
+      cell.count = 3;
+      expect(cell.countString).toEqual('3')
+
+      cell.count = 4;
+      expect(cell.countString).toEqual('4')
+
+      cell.count = 5;
+      expect(cell.countString).toEqual('5')
+
+      cell.count = 6;
+      expect(cell.countString).toEqual('6')
+
+      cell.count = 7;
+      expect(cell.countString).toEqual('7')
+
+      cell.count = 8;
+      expect(cell.countString).toEqual('8')
+
+      cell.count = 9;
+      expect(cell.countString).toEqual('9')
+    })
+  })
+
+  describe('#isMiss', () => {
+    it('地雷なのに開いてしまった場合は true となること', () => {
+      const cell = new Cell()
+      cell.isMine = true
+      cell.isOpen = true
+      cell.isFlag = false
+
+      expect(cell.isMiss).toBeTruthy()
+    })
+
+    it('地雷じゃないのにフラグを立ててしまった場合は true となること', () => {
+      const cell = new Cell()
+      cell.isMine = false
+      cell.isOpen = false
+      cell.isFlag = true
+
+      expect(cell.isMiss).toBeTruthy()
+    })
+
+    it('地雷じゃないセルを開いた場合は false となること', () => {
+      const cell = new Cell()
+      cell.isMine = false
+      cell.isOpen = true
+      cell.isFlag = false
+
+      expect(cell.isMiss).toBeFalsy()
+    })
+
+    it('地雷セルにフラグを立てた場合は false となること', () => {
+      const cell = new Cell()
+      cell.isMine = true
+      cell.isOpen = false
+      cell.isFlag = true
+
+      expect(cell.isMiss).toBeFalsy()
+    })
+  })
 })
