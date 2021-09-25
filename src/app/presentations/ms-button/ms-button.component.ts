@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-ms-button',
+  selector: 'ms-button',
   templateUrl: './ms-button.component.html',
   styleUrls: ['./ms-button.component.scss']
 })

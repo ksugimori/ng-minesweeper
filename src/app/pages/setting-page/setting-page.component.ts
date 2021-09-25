@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-setting-page',
+  selector: 'ms-setting-page',
   templateUrl: './setting-page.component.html',
   styleUrls: ['./setting-page.component.scss']
 })

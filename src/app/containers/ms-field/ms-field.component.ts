@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-ms-field',
+  selector: 'ms-field',
   templateUrl: './ms-field.component.html',
   styleUrls: ['./ms-field.component.scss']
 })
-export class MsFieldComponent implements OnInit {
+export class MsFieldComponent  {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GameService } from 'src/app/game.service';
 
 @Component({
-  selector: 'app-ms-status-bar',
+  selector: 'ms-status-bar',
   templateUrl: './ms-status-bar.component.html',
   styleUrls: ['./ms-status-bar.component.scss']
 })

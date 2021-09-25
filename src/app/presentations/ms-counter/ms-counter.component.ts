@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-ms-counter',
+  selector: 'ms-counter',
   templateUrl: './ms-counter.component.html',
   styleUrls: ['./ms-counter.component.scss']
 })

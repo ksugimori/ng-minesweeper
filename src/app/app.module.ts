@@ -27,6 +27,6 @@ import { MsButtonComponent } from './presentations/ms-button/ms-button.component
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
