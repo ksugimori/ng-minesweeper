@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cell } from 'src/app/models/Cell';
+import { Point } from 'src/app/models/util/Point';
 
 @Component({
   selector: 'ms-field',
@@ -23,4 +24,11 @@ export class MsFieldComponent {
     ]);
   }
 
+  onLeftClickCell(p: { x: number, y: number }) {
+    console.log("left clicked " + JSON.stringify(p));
+  }
+
+  onRightClickCell(p: { x: number, y: number }) {
+    console.log("right clicked " + JSON.stringify(p));
+  }
 }
