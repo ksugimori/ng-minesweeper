@@ -1,0 +1,11 @@
+@import '../../../variables.scss';
+
+:host {
+  display: block;
+  width: 2em;
+  height: 2em;
+  border: 0.2em solid $main-color;
+  margin: 0.2em;
+  text-align: center;
+  line-height: 2em;
+}

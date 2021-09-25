@@ -1,0 +1,5 @@
+<div class="field">
+  <div *ngFor="let row of rows; let y = index" class="row">
+    <ms-cell *ngFor="let cell of row; let x = index" [cell]="cell"></ms-cell>
+  </div>
+</div>

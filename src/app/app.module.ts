@@ -10,6 +10,7 @@ import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.c
 import { MsFieldComponent } from './containers/ms-field/ms-field.component';
 import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
 import { MsButtonComponent } from './presentations/ms-button/ms-button.component';
+import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MsButtonComponent } from './presentations/ms-button/ms-button.component
     MsStatusBarComponent,
     MsCounterComponent,
     MsButtonComponent,
-    MsFieldComponent
+    MsFieldComponent,
+    MsCellComponent
   ],
   imports: [
     BrowserModule,

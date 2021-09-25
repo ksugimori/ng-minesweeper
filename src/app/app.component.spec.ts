@@ -1,6 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MsFieldComponent } from './containers/ms-field/ms-field.component';
+import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { PlayPageComponent } from './pages/play-page/play-page.component';
+import { SettingPageComponent } from './pages/setting-page/setting-page.component';
+import { MsButtonComponent } from './presentations/ms-button/ms-button.component';
+import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
+import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +17,15 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MainPageComponent,
+        PlayPageComponent,
+        SettingPageComponent,
+        MsStatusBarComponent,
+        MsFieldComponent,
+        MsCellComponent,
+        MsButtonComponent,
+        MsCounterComponent
       ],
     }).compileComponents();
   });

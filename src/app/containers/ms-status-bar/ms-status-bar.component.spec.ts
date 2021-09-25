@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MsButtonComponent } from 'src/app/presentations/ms-button/ms-button.component';
+import { MsCounterComponent } from 'src/app/presentations/ms-counter/ms-counter.component';
 
 import { MsStatusBarComponent } from './ms-status-bar.component';
 
@@ -8,9 +10,13 @@ describe('MsStatusBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MsStatusBarComponent ]
+      declarations: [
+        MsStatusBarComponent,
+        MsButtonComponent,
+        MsCounterComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
