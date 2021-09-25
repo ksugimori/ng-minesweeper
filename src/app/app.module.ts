@@ -7,6 +7,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingPageComponent } from './pages/setting-page/setting-page.component';
 import { PlayPageComponent } from './pages/play-page/play-page.component';
 import { MsStatusBarComponent } from './containers/ms-status-bar/ms-status-bar.component';
+import { MsFieldComponent } from './containers/ms-field/ms-field.component';
 import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
 import { MsButtonComponent } from './presentations/ms-button/ms-button.component';
 
@@ -18,7 +19,8 @@ import { MsButtonComponent } from './presentations/ms-button/ms-button.component
     PlayPageComponent,
     MsStatusBarComponent,
     MsCounterComponent,
-    MsButtonComponent
+    MsButtonComponent,
+    MsFieldComponent
   ],
   imports: [
     BrowserModule,

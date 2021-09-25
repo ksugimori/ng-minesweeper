@@ -1,4 +1,10 @@
-.game {
+.status-bar {
   width: 20em;
   margin: 1em auto;
+}
+
+.field {
+  width: 40em;
+  margin: 1em auto;
+  overflow-x: scroll;
 }
