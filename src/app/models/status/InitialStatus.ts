@@ -8,14 +8,14 @@ import { Status } from './Status';
  */
 export class InitialStatus extends AbstractStatus {
   constructor() {
-    super('INIT')
+    super('INIT');
   }
 
   /**
    * 終了状態か？
    */
   get isEnd() {
-    return false
+    return false;
   }
 
   /**
@@ -27,17 +27,17 @@ export class InitialStatus extends AbstractStatus {
    */
   open(game: Game, point: Point) {
     // 開始準備
-    game.mine(point)
-    game.timerStart()
-    game.status = Status.PLAY
+    game.mine(point);
+    game.timerStart();
+    game.status = Status.PLAY;
 
     // セルを開く
-    game.doOpen(point)
+    game.doOpen(point);
 
     // 終了判定
     if (game.isWin()) {
-      game.timerStop()
-      game.status = Status.WIN
+      game.timerStop();
+      game.status = Status.WIN;
     }
   }
 

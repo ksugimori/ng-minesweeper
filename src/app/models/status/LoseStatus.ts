@@ -1,20 +1,20 @@
-import { Game } from "../Game"
-import { Point } from "../util/Point"
-import { AbstractStatus } from "./AbstractStatus"
+import { Game } from "../Game";
+import { Point } from "../util/Point";
+import { AbstractStatus } from "./AbstractStatus";
 
 /**
  * ゲーム終了状態（負け）
  */
 export class LoseStatus extends AbstractStatus {
   constructor() {
-    super('LOSE')
+    super('LOSE');
   }
 
   /**
    * 終了状態か？
    */
   get isEnd() {
-    return true
+    return true;
   }
 
   /**

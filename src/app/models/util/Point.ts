@@ -17,8 +17,8 @@ export class Point implements Equalable<Point> {
    */
   constructor(x: number, y: number) {
     // 直接更新されたくないので x, y は Getter のみ公開
-    this._x = x
-    this._y = y
+    this._x = x;
+    this._y = y;
   }
 
   /**
@@ -30,21 +30,21 @@ export class Point implements Equalable<Point> {
    * @param y y座標
    */
   static of(x: number, y: number) {
-    return new Point(x, y)
+    return new Point(x, y);
   }
 
   /**
    * x座標
    */
   get x(): number {
-    return this._x
+    return this._x;
   }
 
   /**
    * y座標
    */
   get y(): number {
-    return this._y
+    return this._y;
   }
 
   /**
@@ -52,7 +52,7 @@ export class Point implements Equalable<Point> {
    * @param other 比較対象のオブジェクト
    */
   equals(other: Point) {
-    return this._x === other._x && this._y === other._y
+    return this._x === other._x && this._y === other._y;
   }
 
   /**
@@ -60,7 +60,7 @@ export class Point implements Equalable<Point> {
    * @param n 移動量
    */
   addX(n: number) {
-    return Point.of(this._x + n, this._y)
+    return Point.of(this._x + n, this._y);
   }
 
   /**
@@ -68,6 +68,6 @@ export class Point implements Equalable<Point> {
    * @param n 移動量
    */
   addY(n: number) {
-    return Point.of(this._x, this._y + n)
+    return Point.of(this._x, this._y + n);
   }
 }

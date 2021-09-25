@@ -34,6 +34,6 @@ describe('MsButtonComponent', () => {
     fixture.debugElement.query(By.css('button')).triggerEventHandler('click', new Event('hoge'));
 
     // 検証
-    expect(flag).toBeTruthy()
-  })
+    expect(flag).toBeTruthy();
+  });
 });

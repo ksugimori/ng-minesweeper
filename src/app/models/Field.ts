@@ -26,14 +26,14 @@ export class Field {
   constructor(width?: number, height?: number) {
     this.width = width || 0;
     this.height = height || 0;
-    this.rows = []
+    this.rows = [];
 
     for (let y = 0; y < this.height; y++) {
-      let row: Cell[] = []
+      let row: Cell[] = [];
       for (let x = 0; x < this.width; x++) {
-        row.push(new Cell())
+        row.push(new Cell());
       }
-      this.rows.push(row)
+      this.rows.push(row);
     }
   }
 
@@ -43,9 +43,9 @@ export class Field {
    */
   cellAt(point: Point): Cell | undefined {
     if (contains(this, point)) {
-      return this.rows[point.y][point.x]
+      return this.rows[point.y][point.x];
     } else {
-      return undefined
+      return undefined;
     }
   }
 
@@ -54,14 +54,14 @@ export class Field {
    * @param filterFunc Cell を引数にとるフィルタリング関数
    */
   points(filterFunc?: (c: Cell) => boolean) {
-    let result = []
+    let result = [];
     for (let x = 0; x < this.width; x++) {
       for (let y = 0; y < this.height; y++) {
-        result.push(Point.of(x, y))
+        result.push(Point.of(x, y));
       }
     }
 
-    return filterByCell(this, result, filterFunc)
+    return filterByCell(this, result, filterFunc);
   }
 
   /**
@@ -82,9 +82,9 @@ export class Field {
       center.addY(1).addX(-1),
       center.addY(1),
       center.addY(1).addX(1)
-    ].filter(p => contains(this, p))
+    ].filter(p => contains(this, p));
 
-    return filterByCell(this, points, filterFunc)
+    return filterByCell(this, points, filterFunc);
   }
 }
 
@@ -98,7 +98,7 @@ export class Field {
  * @param p 座標
  */
 function contains(field: Field, p: Point) {
-  return (p.x >= 0 && p.x < field.width) && (p.y >= 0 && p.y < field.height)
+  return (p.x >= 0 && p.x < field.width) && (p.y >= 0 && p.y < field.height);
 }
 
 /**
@@ -111,9 +111,9 @@ function filterByCell(field: Field, points: Point[], filterFunc?: (c: Cell) => b
   if (filterFunc) {
     return points.filter(p => {
       const cell = field.cellAt(p);
-      return (!cell) ? false : filterFunc(cell)
+      return (!cell) ? false : filterFunc(cell);
     });
   } else {
-    return points
+    return points;
   }
 }

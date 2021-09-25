@@ -1,21 +1,21 @@
-import { Game } from '../Game'
-import { Point } from '../util/Point'
-import { AbstractStatus } from './AbstractStatus'
-import { Status } from './Status'
+import { Game } from '../Game';
+import { Point } from '../util/Point';
+import { AbstractStatus } from './AbstractStatus';
+import { Status } from './Status';
 
 /**
  * プレイ中の状態
  */
 export class PlayStatus extends AbstractStatus {
   constructor() {
-    super('PLAY')
+    super('PLAY');
   }
 
   /**
    * 終了状態か？
    */
   get isEnd() {
-    return false
+    return false;
   }
 
   /**
@@ -24,15 +24,15 @@ export class PlayStatus extends AbstractStatus {
    * @param point 座標
    */
   open(game: Game, point: Point) {
-    game.doOpen(point)
+    game.doOpen(point);
 
     // 終了判定
     if (game.isWin()) {
-      game.timerStop()
-      game.status = Status.WIN
+      game.timerStop();
+      game.status = Status.WIN;
     } else if (game.isLose()) {
-      game.timerStop()
-      game.status = Status.LOSE
+      game.timerStop();
+      game.status = Status.LOSE;
     }
   }
 
@@ -42,6 +42,6 @@ export class PlayStatus extends AbstractStatus {
    * @param point 座標
    */
   flag(game: Game, point: Point) {
-    game.doFlag(point)
+    game.doFlag(point);
   }
 }

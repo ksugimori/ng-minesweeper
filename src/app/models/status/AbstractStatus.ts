@@ -13,7 +13,7 @@ export abstract class AbstractStatus {
    * @param name 名称
    */
   constructor(name: string) {
-    this.name = name
+    this.name = name;
   }
 
   /**

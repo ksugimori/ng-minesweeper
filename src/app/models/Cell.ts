@@ -18,26 +18,26 @@ export class Cell {
    * コンストラクタ
    */
   constructor(params?: any) {
-    this.count = 0
-    this.isOpen = false
-    this.isMine = false
-    this.isFlag = false
+    this.count = 0;
+    this.isOpen = false;
+    this.isMine = false;
+    this.isFlag = false;
 
-    Object.assign(this, params)
+    Object.assign(this, params);
   }
 
   /**
    * 数字文字列
    */
   get countString() {
-    return this.isEmpty ? '' : this.count.toString()
+    return this.isEmpty ? '' : this.count.toString();
   }
 
   /**
    * 空のセルであるか？
    */
   get isEmpty() {
-    return this.count === 0 && !this.isMine
+    return this.count === 0 && !this.isMine;
   }
 
   /**
@@ -49,43 +49,43 @@ export class Cell {
    */
   get isMiss() {
     if (!this.isMine && this.isFlag) {
-      return true
+      return true;
     }
 
     if (this.isMine && this.isOpen) {
-      return true
+      return true;
     }
 
-    return false
+    return false;
   }
 
   /**
    * セルを開く
    */
   open() {
-    this.isOpen = true
+    this.isOpen = true;
   }
 
   /**
    * 地雷をセットする
    */
   mine() {
-    this.isMine = true
+    this.isMine = true;
   }
 
   /**
    * フラグを立てる
    */
   flag() {
-    if (this.isOpen) return
+    if (this.isOpen) return;
 
-    this.isFlag = true
+    this.isFlag = true;
   }
 
   /**
    * フラグを外す
    */
   unflag() {
-    this.isFlag = false
+    this.isFlag = false;
   }
 }

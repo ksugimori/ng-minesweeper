@@ -19,9 +19,9 @@ export class Setting {
    * @param numMines 地雷数
    */
   constructor(width: number, height: number, numMines: number) {
-    this.width = width
-    this.height = height
-    this.numMines = numMines
+    this.width = width;
+    this.height = height;
+    this.numMines = numMines;
   }
 
   /**
@@ -31,16 +31,16 @@ export class Setting {
    */
   get name() {
     if (this.equals(Setting.EASY)) {
-      return 'EASY'
+      return 'EASY';
     }
     if (this.equals(Setting.NORMAL)) {
-      return 'NORMAL'
+      return 'NORMAL';
     }
     if (this.equals(Setting.HARD)) {
-      return 'HARD'
+      return 'HARD';
     }
 
-    return 'CUSTOM'
+    return 'CUSTOM';
   }
 
   /**
@@ -48,22 +48,22 @@ export class Setting {
    * @param other 比較するオブジェクト
    */
   equals(other: Setting) {
-    if (!other) return false
+    if (!other) return false;
 
     return this.height === other.height &&
       this.width === other.width &&
-      this.numMines === other.numMines
+      this.numMines === other.numMines;
   }
 
   /**
    * オブジェクトをコピーする。
    */
   clone() {
-    let result = new Setting(Setting.EASY.width, Setting.EASY.height, Setting.EASY.numMines)
+    let result = new Setting(Setting.EASY.width, Setting.EASY.height, Setting.EASY.numMines);
 
-    result.merge(this)
+    result.merge(this);
 
-    return result
+    return result;
   }
 
   /**
@@ -71,9 +71,9 @@ export class Setting {
    * @param other
    */
   merge(other: { width: number, height: number, numMines: number }) {
-    this.width = other.width
-    this.height = other.height
-    this.numMines = other.numMines
+    this.width = other.width;
+    this.height = other.height;
+    this.numMines = other.numMines;
   }
 
   /**
@@ -82,9 +82,9 @@ export class Setting {
    * 地雷数が盤面のセル数より多い場合、セル数 - 1 を地雷数にします
    */
   adjustNumMines() {
-    let total = this.width * this.height
+    let total = this.width * this.height;
     if (total <= this.numMines) {
-      this.numMines = Math.max(0, total - 1)
+      this.numMines = Math.max(0, total - 1);
     }
   }
 }

@@ -11,11 +11,11 @@ import { Point } from './Point';
  * @param excludePoint 除外する座標
  */
 function points(setting: Setting, excludePoint: Point) {
-  let excludeIndex = toIndex(excludePoint, setting.width)
+  let excludeIndex = toIndex(excludePoint, setting.width);
   return randomInts(setting.width * setting.height)
     .filter(i => i !== excludeIndex)
     .slice(0, setting.numMines)
-    .map(i => toPoint(i, setting.width))
+    .map(i => toPoint(i, setting.width));
 }
 
 /**
@@ -23,14 +23,14 @@ function points(setting: Setting, excludePoint: Point) {
  * @param length 長さ
  */
 function randomInts(length: number) {
-  let result = new Array(length)
+  let result = new Array(length);
   for (let i = 0; i < length; i++) {
-    result[i] = i
+    result[i] = i;
   }
 
-  shuffle(result)
+  shuffle(result);
 
-  return result
+  return result;
 }
 
 /**
@@ -39,7 +39,7 @@ function randomInts(length: number) {
  * @param width 横幅
  */
 function toIndex(point: Point, width: number) {
-  return point.y * width + point.x
+  return point.y * width + point.x;
 }
 
 /**
@@ -48,9 +48,9 @@ function toIndex(point: Point, width: number) {
  * @param width 横幅
  */
 function toPoint(index: number, width: number) {
-  let x = index % width
-  let y = Math.floor(index / width)
-  return Point.of(x, y)
+  let x = index % width;
+  let y = Math.floor(index / width);
+  return Point.of(x, y);
 }
 
 /**
@@ -59,11 +59,11 @@ function toPoint(index: number, width: number) {
  */
 function shuffle(array: any[]): void {
   for (let i = 0; i < array.length; i++) {
-    let j = Math.floor(Math.random() * array.length)
-    let tmp = array[i]
-    array[i] = array[j]
-    array[j] = tmp
+    let j = Math.floor(Math.random() * array.length);
+    let tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
   }
 }
 
-export default { points }
+export default { points };

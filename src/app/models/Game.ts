@@ -21,76 +21,76 @@ export class Game {
    * コンストラクタ
    */
   constructor() {
-    this.field = new Field()
-    this.stopWatch = new StopWatch()
-    this.setting = Setting.EASY
-    this.status = Status.INIT
+    this.field = new Field();
+    this.stopWatch = new StopWatch();
+    this.setting = Setting.EASY;
+    this.status = Status.INIT;
   }
 
   /**
    * フラグの数
    */
   get flagCount() {
-    return this.field.points(cell => cell.isFlag).length
+    return this.field.points(cell => cell.isFlag).length;
   }
 
   /**
    * 閉じているセルの数
    */
   get closedCount() {
-    return this.field.points(cell => !cell.isOpen).length
+    return this.field.points(cell => !cell.isOpen).length;
   }
 
   /**
    * ミスしたセル数（地雷なのに開いてしまったセルの数）
    */
   get missCount() {
-    return this.field.points(cell => cell.isMine && cell.isOpen).length
+    return this.field.points(cell => cell.isMine && cell.isOpen).length;
   }
 
   /**
    * プレイ時間
    */
   get playTime() {
-    return this.stopWatch.playTime
+    return this.stopWatch.playTime;
   }
 
   /**
    * タイマー計測を開始する
    */
   timerStart() {
-    this.stopWatch.start()
+    this.stopWatch.start();
   }
 
   /**
    * タイマー計測を停止する
    */
   timerStop() {
-    this.stopWatch.stop()
+    this.stopWatch.stop();
   }
 
   /**
    * 勝利状態か？
    */
   isWin() {
-    return this.missCount === 0 && this.closedCount === this.setting.numMines
+    return this.missCount === 0 && this.closedCount === this.setting.numMines;
   }
 
   /**
    * 敗北状態か？
    */
   isLose() {
-    return this.missCount > 0
+    return this.missCount > 0;
   }
 
   /**
    * 盤面を初期化する。
    */
   initialize() {
-    this.field = new Field(this.setting.width, this.setting.height)
+    this.field = new Field(this.setting.width, this.setting.height);
 
-    this.stopWatch.reset()
-    this.status = Status.INIT
+    this.stopWatch.reset();
+    this.status = Status.INIT;
   }
 
   /**
@@ -101,15 +101,15 @@ export class Game {
    */
   mine(exclude: Point) {
     // 地雷をランダムにセット
-    random.points(this.setting, exclude).forEach(p => this.field.cellAt(p)?.mine())
+    random.points(this.setting, exclude).forEach(p => this.field.cellAt(p)?.mine());
 
     // 各マスの周囲の地雷数をカウントし、value にセットする。
     this.field.points().forEach(p => {
-      let cell = this.field.cellAt(p)!
+      let cell = this.field.cellAt(p)!;
       if (!cell.isMine) {
-        cell.count = this.field.pointsArround(p, c => c.isMine).length
+        cell.count = this.field.pointsArround(p, c => c.isMine).length;
       }
-    })
+    });
   }
 
   /**
@@ -118,7 +118,7 @@ export class Game {
    * @param y y座標
    */
   open(x: number, y: number) {
-    this.status.open(this, Point.of(x, y))
+    this.status.open(this, Point.of(x, y));
   }
 
   /**
@@ -127,26 +127,26 @@ export class Game {
    * @param point 座標
    */
   doOpen(point: Point) {
-    const cell = this.field.cellAt(point)
+    const cell = this.field.cellAt(point);
     if (cell === undefined) {
       return;
     }
 
     if (cell.isFlag) {
-      return
+      return;
     }
 
     if (cell.isOpen) {
-      let arroundFlagCount = this.field.pointsArround(point, c => c.isFlag).length
+      let arroundFlagCount = this.field.pointsArround(point, c => c.isFlag).length;
 
       if (cell.count === arroundFlagCount) {
-        this.openRecursive(point)
+        this.openRecursive(point);
       }
     } else {
-      cell.open()
+      cell.open();
 
       if (cell.isEmpty) {
-        this.openRecursive(point)
+        this.openRecursive(point);
       }
     }
   }
@@ -157,7 +157,7 @@ export class Game {
    * @param y y座標
    */
   flag(x: number, y: number) {
-    this.status.flag(this, Point.of(x, y))
+    this.status.flag(this, Point.of(x, y));
   }
 
   /**
@@ -165,15 +165,15 @@ export class Game {
    * @param point 座標
    */
   doFlag(point: Point) {
-    let cell = this.field.cellAt(point)
+    let cell = this.field.cellAt(point);
     if (cell === undefined) {
       return;
     }
 
     if (cell.isFlag) {
-      cell.unflag()
+      cell.unflag();
     } else {
-      cell.flag()
+      cell.flag();
     }
   }
 
@@ -185,23 +185,23 @@ export class Game {
    */
   openRecursive(point: Point) {
     // 開けるセルであるか？
-    const canOpen = (cell: Cell) => !cell.isOpen && !cell.isFlag
+    const canOpen = (cell: Cell) => !cell.isOpen && !cell.isFlag;
 
-    let queue = new UniqueQueue<Point>()
-    this.field.pointsArround(point, canOpen).forEach(p => queue.push(p))
+    let queue = new UniqueQueue<Point>();
+    this.field.pointsArround(point, canOpen).forEach(p => queue.push(p));
 
-    let target
+    let target;
     while ((target = queue.shift()) !== undefined) {
-      let cell = this.field.cellAt(target)
+      let cell = this.field.cellAt(target);
       if (cell === undefined) {
         continue;
       }
 
-      cell.open()
+      cell.open();
 
       // 開いたセルが空白なら、その周囲を再帰的に開く
       if (cell.isEmpty) {
-        this.field.pointsArround(target, canOpen).forEach(p => queue.push(p))
+        this.field.pointsArround(target, canOpen).forEach(p => queue.push(p));
       }
     }
   }

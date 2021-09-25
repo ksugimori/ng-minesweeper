@@ -9,7 +9,7 @@ export class UniqueQueue<T extends Equalable<T>> {
   private elements: T[];
 
   constructor() {
-    this.elements = []
+    this.elements = [];
   }
 
   /**
@@ -20,16 +20,16 @@ export class UniqueQueue<T extends Equalable<T>> {
    */
   push(element: T) {
     if (this.elements.some(x => x.equals(element))) {
-      return
+      return;
     }
 
-    this.elements.push(element)
+    this.elements.push(element);
   }
 
   /**
    * Point を取り出す
    */
   shift(): T | undefined {
-    return this.elements.shift()
+    return this.elements.shift();
   }
 }
