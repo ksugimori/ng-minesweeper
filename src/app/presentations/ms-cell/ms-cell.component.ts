@@ -17,6 +17,21 @@ export class MsCellComponent {
   /** 右クリック */
   @Output() rightClick = new EventEmitter();
 
+  public get cssClassArray() {
+    const result = ['cell'];
+
+    if (this.cell.isOpen) {
+      result.push('open');
+      if (this.cell.isMine) {
+        result.push('cell-mine');
+      } else {
+        result.push(`cell-${this.cell.count}`);
+      }
+    }
+
+    return result;
+  }
+
   constructor() { }
 
   /**

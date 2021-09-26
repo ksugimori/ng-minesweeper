@@ -1,5 +1,4 @@
-<div class="cell"
-     [class.open]="cell.isOpen"
+<div [ngClass]="cssClassArray"
      (click)="onLeftClick($event)"
      (contextmenu)="onRightClick($event)">
   <ng-container *ngIf="cell.isOpen; else closeCell">

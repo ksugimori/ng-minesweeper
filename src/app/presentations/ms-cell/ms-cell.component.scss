@@ -8,8 +8,58 @@
   background-color: $main-color;
   text-align: center;
   line-height: 2rem;
+  user-select: none;
+  border-radius: 2px;
 
   &.open {
     background-color: #e3e3e3;
+
+    /**
+     * 数字のカラー
+     */
+    &.cell-1 {
+      background-color: #babafe;
+      color: #0200fb;
+    }
+
+    &.cell-2 {
+      background-color: #B6E4CE;
+      color: #1f8255;
+    }
+
+    &.cell-3 {
+      background-color: #ffadad;
+      color: #fe0000;
+    }
+
+    &.cell-4 {
+      background-color: #9292d0;
+      color: #010180;
+    }
+
+    &.cell-5 {
+      background-color: #c78f90;
+      color: #7f0203;
+    }
+
+    &.cell-6 {
+      background-color: #82c0c1;
+      color: #027f80;
+    }
+
+    &.cell-7 {
+      background-color: #cbcbcb;
+      color: #42b983;
+    }
+
+    &.cell-8 {
+      background-color: #b4b4b4;
+      color: black;
+    }
+
+    &.cell-mine {
+      background-color: $accent-color;
+      color: #fff;
+    }
   }
 }
