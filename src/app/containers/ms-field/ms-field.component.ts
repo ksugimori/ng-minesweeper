@@ -10,14 +10,17 @@ import { Coordinate } from 'src/app/models/util/Coordinate';
 })
 export class MsFieldComponent {
 
+  /** ゲーム */
   @Input() game?: Game;
 
+  /** セル行の配列 */
   public get rows() {
     return this.game?.field?.rows;
   }
 
   /**
    * コンストラクタ
+   * @param gameService ゲームサービス
    */
   constructor(private gameService: GameService) {}
 

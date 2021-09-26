@@ -1,13 +1,16 @@
 <div [ngClass]="cssClassArray"
      (click)="onLeftClick($event)"
      (contextmenu)="onRightClick($event)">
-  <ng-container *ngIf="cell.isOpen; else closeCell">
-    {{ cell.count > 0 ? cell.count : '' }}
+  <ng-container *ngIf="!isOpen; else openCell">
+    <ng-container *ngIf="isFlag">
+      F
+    </ng-container>
   </ng-container>
 </div>
 
-<ng-template #closeCell>
-  <ng-container *ngIf="cell.isFlag">
-    F
+<ng-template #openCell>
+  {{ count > 0 ? count : '' }}
+  <ng-container *ngIf="isMine">
+    ＊
   </ng-container>
 </ng-template>
