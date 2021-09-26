@@ -19,12 +19,20 @@ export class MsCellComponent {
 
   constructor() { }
 
-  onLeftClick($event: Event) {
+  /**
+   * 左クリック
+   * @param $event ネイティブイベント
+   */
+   onLeftClick($event: Event) {
     $event.stopPropagation();
     this.leftClick.emit();
   }
 
-  onRightClick($event: Event) {
+  /**
+   * 右クリック
+   * @param $event ネイティブイベント
+   */
+   onRightClick($event: Event) {
     $event.stopPropagation();
     $event.preventDefault();
     this.rightClick.emit();

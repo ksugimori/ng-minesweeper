@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Cell } from 'src/app/models/Cell';
-import { Point } from 'src/app/models/util/Point';
+import { Game } from 'src/app/models/Game';
 
 @Component({
   selector: 'ms-field',
@@ -9,26 +8,33 @@ import { Point } from 'src/app/models/util/Point';
 })
 export class MsFieldComponent {
 
-  public rows: Cell[][] = [];
+  private game: Game;
 
+  public get rows() {
+    return this.game.field.rows;
+  }
+
+  /**
+   * コンストラクタ
+   */
   constructor() {
-    this.rows.push([
-      new Cell({ count: 1 }),
-      new Cell({ count: 2 }),
-      new Cell({ count: 3 }),
-    ]);
-    this.rows.push([
-      new Cell({ count: 9 }),
-      new Cell({ count: 8 }),
-      new Cell({ count: 7 }),
-    ]);
+    this.game = new Game();
+    this.game.initialize();
   }
 
+  /**
+   * セルを左クリックしたときの操作
+   * @param p 座標
+   */
   onLeftClickCell(p: { x: number, y: number }) {
-    console.log("left clicked " + JSON.stringify(p));
+    this.game.open(p.x, p.y);
   }
 
+  /**
+   * セルを右クリックしたときの操作
+   * @param p 座標
+   */
   onRightClickCell(p: { x: number, y: number }) {
-    console.log("right clicked " + JSON.stringify(p));
+    this.game.flag(p.x, p.y);
   }
 }

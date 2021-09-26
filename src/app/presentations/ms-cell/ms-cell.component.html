@@ -1,5 +1,14 @@
 <div class="cell"
-(click)="onLeftClick($event)"
-(contextmenu)="onRightClick($event)">
-  {{ cell.count }}
+     [class.open]="cell.isOpen"
+     (click)="onLeftClick($event)"
+     (contextmenu)="onRightClick($event)">
+  <ng-container *ngIf="cell.isOpen; else closeCell">
+    {{ cell.count }}
+  </ng-container>
 </div>
+
+<ng-template #closeCell>
+  <ng-container *ngIf="cell.isFlag">
+    F
+  </ng-container>
+</ng-template>
