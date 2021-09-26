@@ -2,15 +2,14 @@
 
 .cell {
   display: block;
-  width: 2em;
-  height: 2em;
-  border: 0.2em solid $main-color;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.15rem;
   background-color: $main-color;
-  margin: 0.2em;
   text-align: center;
-  line-height: 2em;
+  line-height: 2rem;
 
   &.open {
-    background-color: #fff;
+    background-color: #e3e3e3;
   }
 }
