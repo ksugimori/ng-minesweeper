@@ -13,21 +13,20 @@ export class GameService {
     this.game.initialize();
   }
 
-  public getGame() {
+  public getGame(): Game {
     return this.game;
   }
 
   public reset(): Game {
-    this.game = new Game();
     this.game.initialize();
     return this.game;
   }
 
-  public open(at: Coordinate) {
+  public open(at: Coordinate): void {
     this.game.open(at.x, at.y);
   }
 
-  public flag(at: Coordinate) {
+  public flag(at: Coordinate): void {
     this.game.flag(at.x, at.y);
   }
 }

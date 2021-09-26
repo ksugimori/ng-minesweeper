@@ -3,7 +3,7 @@
      (click)="onLeftClick($event)"
      (contextmenu)="onRightClick($event)">
   <ng-container *ngIf="cell.isOpen; else closeCell">
-    {{ cell.count }}
+    {{ cell.count > 0 ? cell.count : '' }}
   </ng-container>
 </div>
 

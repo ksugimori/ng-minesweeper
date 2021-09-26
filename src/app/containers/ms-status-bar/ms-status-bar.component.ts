@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GameService } from 'src/app/game.service';
 import { Game } from 'src/app/models/Game';
 
 @Component({
@@ -10,7 +11,7 @@ export class MsStatusBarComponent {
 
   @Input() game?: Game;
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   public get mineCount(): number {
     if (!this.game) {
@@ -31,7 +32,7 @@ export class MsStatusBarComponent {
     return this.game.playTime;
   }
 
-  onClickButton(): void {
-    alert('clicked!!!!');
+  reset(): void {
+    this.gameService.reset();
   }
 }

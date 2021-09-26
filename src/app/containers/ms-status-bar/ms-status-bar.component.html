@@ -1,3 +1,5 @@
 <ms-counter [value]="mineCount"></ms-counter>
-<ms-button (clickButton)="onClickButton()">INIT</ms-button>
+<ms-button (clickButton)="reset()">
+  {{ game?.status?.name }}
+</ms-button>
 <ms-counter [value]="time"></ms-counter>
