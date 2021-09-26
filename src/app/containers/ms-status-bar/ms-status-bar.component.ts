@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { GameService } from 'src/app/game.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/app/models/Game';
 
 @Component({
@@ -7,23 +6,29 @@ import { Game } from 'src/app/models/Game';
   templateUrl: './ms-status-bar.component.html',
   styleUrls: ['./ms-status-bar.component.scss']
 })
-export class MsStatusBarComponent implements OnInit {
+export class MsStatusBarComponent {
 
-  // TODO: これは @Input に
-  private game!: Game;
+  @Input() game?: Game;
 
-  constructor(private gameService: GameService) { }
-
-  ngOnInit() {
-    this.game = this.gameService.getGame();
-  }
+  constructor() { }
 
   public get mineCount(): number {
-    return this.gameService.getGame().closedCount;
+    if (!this.game) {
+      return 0;
+    }
+
+    if (this.game.status.isEnd) {
+      return 0;
+    } else {
+      return this.game.setting.numMines - this.game.flagCount;
+    }
   }
 
   public get time(): number {
-    return this.gameService.getGame().playTime;
+    if (!this.game) {
+      return 0;
+    }
+    return this.game.playTime;
   }
 
   onClickButton(): void {

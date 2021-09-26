@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GameService } from 'src/app/game.service';
 import { Game } from 'src/app/models/Game';
 import { Coordinate } from 'src/app/models/util/Coordinate';
@@ -8,23 +8,18 @@ import { Coordinate } from 'src/app/models/util/Coordinate';
   templateUrl: './ms-field.component.html',
   styleUrls: ['./ms-field.component.scss']
 })
-export class MsFieldComponent implements OnInit {
+export class MsFieldComponent {
 
-  // TODO: これは @Input にする
-  private game!: Game;
+  @Input() game?: Game;
 
   public get rows() {
-    return this.game.field.rows;
+    return this.game?.field?.rows;
   }
 
   /**
    * コンストラクタ
    */
   constructor(private gameService: GameService) {}
-
-  ngOnInit() {
-    this.game = this.gameService.reset();
-  }
 
   /**
    * セルを左クリックしたときの操作
