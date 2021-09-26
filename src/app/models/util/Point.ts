@@ -1,9 +1,10 @@
+import { Coordinate } from "./Coordinate";
 import { Equalable } from "./Equalable";
 
 /**
  * 座標を表すクラス
  */
-export class Point implements Equalable<Point> {
+export class Point implements Equalable<Point>, Coordinate {
   /** x 座標 */
   private _x: number;
 

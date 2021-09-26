@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Game } from 'src/app/models/Game';
+import { Coordinate } from 'src/app/models/util/Coordinate';
 
 @Component({
   selector: 'ms-field',
@@ -26,7 +27,7 @@ export class MsFieldComponent {
    * セルを左クリックしたときの操作
    * @param p 座標
    */
-  onLeftClickCell(p: { x: number, y: number }) {
+  onLeftClickCell(p: Coordinate) {
     this.game.open(p.x, p.y);
   }
 
@@ -34,7 +35,7 @@ export class MsFieldComponent {
    * セルを右クリックしたときの操作
    * @param p 座標
    */
-  onRightClickCell(p: { x: number, y: number }) {
+  onRightClickCell(p: Coordinate) {
     this.game.flag(p.x, p.y);
   }
 }
