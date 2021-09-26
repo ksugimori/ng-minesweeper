@@ -17,12 +17,14 @@ header {
 
     a {
       display: block;
-      width: 6em;
-      height: 2em;
-      line-height: 2em;
+      width: 6rem;
+      height: 2rem;
+      line-height: 2rem;
       text-decoration: none;
       color: #fff;
       text-align: center;
+      border-radius: 2px 2px 0 0;
+      margin-left: 0.3rem;
 
       &.active,
       &:hover {
