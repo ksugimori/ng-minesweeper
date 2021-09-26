@@ -2,15 +2,11 @@
      (click)="onLeftClick($event)"
      (contextmenu)="onRightClick($event)">
   <ng-container *ngIf="!isOpen; else openCell">
-    <ng-container *ngIf="isFlag">
-      F
-    </ng-container>
+    <ms-flag *ngIf="isFlag"></ms-flag>
   </ng-container>
 </div>
 
 <ng-template #openCell>
   {{ count > 0 ? count : '' }}
-  <ng-container *ngIf="isMine">
-    ＊
-  </ng-container>
+  <ms-mine *ngIf="isMine"></ms-mine>
 </ng-template>

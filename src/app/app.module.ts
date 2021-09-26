@@ -11,6 +11,8 @@ import { MsFieldComponent } from './containers/ms-field/ms-field.component';
 import { MsCounterComponent } from './presentations/ms-counter/ms-counter.component';
 import { MsButtonComponent } from './presentations/ms-button/ms-button.component';
 import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
+import { MsFlagComponent } from './presentations/icon/ms-flag/ms-flag.component';
+import { MsMineComponent } from './presentations/icon/ms-mine/ms-mine.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
     MsCounterComponent,
     MsButtonComponent,
     MsFieldComponent,
-    MsCellComponent
+    MsCellComponent,
+    MsFlagComponent,
+    MsMineComponent
   ],
   imports: [
     BrowserModule,
