@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GameService } from 'src/app/game.service';
 import { Game } from 'src/app/models/Game';
-import { Coordinate } from 'src/app/models/util/Coordinate';
 
 @Component({
   selector: 'ms-field',
@@ -27,21 +26,23 @@ export class MsFieldComponent {
    * コンストラクタ
    * @param gameService ゲームサービス
    */
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService) { }
 
   /**
    * セルを左クリックしたときの操作
-   * @param at 座標
+   * @param x x座標
+   * @param y y座標
    */
-  onLeftClickCell(at: Coordinate) {
-    this.gameService.open(at);
+  onLeftClickCell(x: number, y: number) {
+    this.gameService.open(x, y);
   }
 
   /**
    * セルを右クリックしたときの操作
-   * @param at 座標
+   * @param x x座標
+   * @param y y座標
    */
-  onRightClickCell(at: Coordinate) {
-    this.gameService.flag(at);
+  onRightClickCell(x: number, y: number) {
+    this.gameService.flag(x, y);
   }
 }

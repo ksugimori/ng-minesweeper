@@ -25,7 +25,7 @@ describe('GameService', () => {
       expect(before.status).toEqual(Status.INIT);
       expect(before.closedCount).toBe(81); // デフォルトで 9x9
 
-      service.open({ x: 0, y: 1 });
+      service.open(0, 1);
 
       const after = service.getGame();
       expect(after.status).toEqual(Status.PLAY);
@@ -36,14 +36,14 @@ describe('GameService', () => {
   describe('#flag', () => {
     it('フラグが立てられること', () => {
       // まず１つ開いてゲームを開始する
-      service.open({ x: 0, y: 0 });
+      service.open(0, 0);
 
       const before = service.getGame();
       expect(before.flagCount).toBe(0);
 
       // どのセルが開くのかはランダムなので閉じているものをひとつ選ぶ
       const p = before.field.points(cell => !cell.isOpen)[0];
-      service.flag(p);
+      service.flag(p.x, p.y);
 
       const after = service.getGame();
       expect(after.flagCount).toBe(1);
@@ -53,12 +53,12 @@ describe('GameService', () => {
   describe('#reset', () => {
     it('ステータスが INIT に戻ること', () => {
       // まず１つ開いてゲームを開始する
-      service.open({ x: 0, y: 0 });
+      service.open(0, 0);
 
       // どのセルが開くのかはランダムなので閉じているものをひとつ選ぶ
       const before = service.getGame();
       const p = before.field.points(cell => !cell.isOpen)[0];
-      service.flag(p);
+      service.flag(p.x, p.y);
 
       expect(before.status).toEqual(Status.PLAY);
       expect(before.flagCount).toBe(1);

@@ -6,7 +6,7 @@
              [isOpen]="isGameEnd || cell.isOpen"
              [isFlag]="cell.isFlag"
              [isMine]="isGameEnd && cell.isMine"
-             (leftClick)="onLeftClickCell({x, y})"
-             (rightClick)="onRightClickCell({x, y})"></ms-cell>
+             (leftClick)="onLeftClickCell(x, y)"
+             (rightClick)="onRightClickCell(x, y)"></ms-cell>
   </div>
 </div>

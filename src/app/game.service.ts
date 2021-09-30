@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Game } from './models/Game';
-import { Coordinate } from './models/util/Coordinate';
 
 /**
  * ゲーム情報の保持、操作を行うサービス。
@@ -50,17 +49,19 @@ export class GameService {
 
   /**
    * セルを開く
-   * @param at 座標
+   * @param x x座標
+   * @param y y座標
    */
-  public open(at: Coordinate): void {
-    this.game.open(at.x, at.y);
+   public open(x: number, y: number): void {
+    this.game.open(x, y);
   }
 
   /**
    * セルにフラグを立てる。
-   * @param at 座標
+   * @param x x座標
+   * @param y y座標
    */
-  public flag(at: Coordinate): void {
-    this.game.flag(at.x, at.y);
+   public flag(x: number, y: number): void {
+    this.game.flag(x, y);
   }
 }
