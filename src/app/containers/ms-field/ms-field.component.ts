@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GameService } from 'src/app/game.service';
 import { Game } from 'src/app/models/Game';
 import { Coordinate } from 'src/app/models/util/Coordinate';
@@ -16,6 +16,11 @@ export class MsFieldComponent {
   /** セル行の配列 */
   public get rows() {
     return this.game?.field?.rows;
+  }
+
+  /** ゲームが終了しているか？ */
+  public get isGameEnd() {
+    return !!this.game?.status?.isEnd;
   }
 
   /**

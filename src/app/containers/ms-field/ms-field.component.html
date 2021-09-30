@@ -3,11 +3,10 @@
        class="row">
     <ms-cell *ngFor="let cell of row; let x = index"
              [count]="cell.count"
-             [isOpen]="!!game?.status?.isEnd || cell.isOpen"
+             [isOpen]="isGameEnd || cell.isOpen"
              [isFlag]="cell.isFlag"
-             [isMine]="!!game?.status?.isEnd && cell.isMine"
+             [isMine]="isGameEnd && cell.isMine"
              (leftClick)="onLeftClickCell({x, y})"
-             (rightClick)="onRightClickCell({x, y})"
-             ></ms-cell>
+             (rightClick)="onRightClickCell({x, y})"></ms-cell>
   </div>
 </div>
