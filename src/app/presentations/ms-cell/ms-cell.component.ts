@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+import { delay, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-cell',
   templateUrl: './ms-cell.component.html',
   styleUrls: ['./ms-cell.component.scss']
 })
-export class MsCellComponent {
+export class MsCellComponent implements OnInit {
 
   /** 周囲の地雷数 */
   @Input() count: number = 0;
@@ -24,6 +26,26 @@ export class MsCellComponent {
 
   /** 右クリック */
   @Output() rightClick = new EventEmitter();
+
+  /** 長押し判定時間（ミリ秒） */
+  private readonly LONG_TAP_MSEC = 500;
+
+  private mouseDown$ = new Subject();
+  private mouseUp$ = new Subject();
+  private touchStart$ = new Subject();
+  private touchEnd$ = new Subject();
+
+  public ngOnInit(): void {
+    this.mouseDown$.pipe(
+      delay(this.LONG_TAP_MSEC),
+      takeUntil(this.mouseUp$) // TODO: これだと２回目に長押ししたとき complete しちゃってる
+    ).subscribe(() => this.rightClick.emit());
+
+    this.touchStart$.pipe(
+      delay(this.LONG_TAP_MSEC),
+      takeUntil(this.touchEnd$) // TODO: これだと２回目に長押ししたとき complete しちゃってる
+    ).subscribe(() => this.rightClick.emit());
+  }
 
   /**
    * セルの状態に応じたクラスの配列
@@ -65,5 +87,21 @@ export class MsCellComponent {
     $event.stopPropagation();
     $event.preventDefault();
     this.rightClick.emit();
+  }
+
+  onMouseDown() {
+    this.mouseDown$.next();
+  }
+
+  onMouseUp() {
+    this.mouseUp$.next();
+  }
+
+  onTouchStart() {
+    this.touchStart$.next();
+  }
+
+  onTouchEnd() {
+    this.touchEnd$.next();
   }
 }
