@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
-import { delay, takeUntil, tap } from 'rxjs/operators';
+import { timer, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-cell',
@@ -36,15 +36,17 @@ export class MsCellComponent implements OnInit {
   private touchEnd$ = new Subject();
 
   public ngOnInit(): void {
-    this.mouseDown$.pipe(
-      delay(this.LONG_TAP_MSEC),
-      takeUntil(this.mouseUp$) // TODO: これだと２回目に長押ししたとき complete しちゃってる
-    ).subscribe(() => this.rightClick.emit());
+    this.mouseDown$.subscribe(() => {
+      timer(this.LONG_TAP_MSEC)
+        .pipe(takeUntil(this.mouseUp$))
+        .subscribe(() => this.rightClick.emit());
+    });
 
-    this.touchStart$.pipe(
-      delay(this.LONG_TAP_MSEC),
-      takeUntil(this.touchEnd$) // TODO: これだと２回目に長押ししたとき complete しちゃってる
-    ).subscribe(() => this.rightClick.emit());
+    this.touchStart$.subscribe(() => {
+      timer(this.LONG_TAP_MSEC)
+        .pipe(takeUntil(this.touchEnd$))
+        .subscribe(() => this.rightClick.emit());
+    });
   }
 
   /**
