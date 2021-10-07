@@ -8,6 +8,12 @@ import { Component } from '@angular/core';
     <div class="field"></div>
   </div>`,
   styles: [
+    `:host {
+      display: block;
+      border: 0.15rem;
+      width: 100%; 
+      height: 100%; 
+    }`,
     '.flag { position: relative; }',
     `.pole {
       position: absolute;
