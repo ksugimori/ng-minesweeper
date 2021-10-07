@@ -2,10 +2,8 @@
   [ngClass]="cssClassArray"
   (click)="onLeftClick($event)"
   (contextmenu)="onRightClick($event)"
-  (mousedown)="onMouseDown()"
-  (mouseup)="onMouseUp()"
-  (touchstart)="onTouchStart()"
-  (touchend)="onTouchEnd()"
+  [msLongTap]="500"
+  (longTap)="onRightClick()"
 >
   <ng-container *ngIf="!isOpen; else openCell">
     <ms-flag *ngIf="isFlag"></ms-flag>
