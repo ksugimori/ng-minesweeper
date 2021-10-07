@@ -4,6 +4,15 @@
 
 body {
   margin: 0;
+
+  /** テキスト選択禁止 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /** iOS Safari などでメニューを出さない */
+  -webkit-touch-callout: none;
 }
 
 .contents {
