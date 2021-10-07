@@ -13,6 +13,7 @@ import { MsButtonComponent } from './presentations/ms-button/ms-button.component
 import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
 import { MsFlagComponent } from './presentations/icon/ms-flag/ms-flag.component';
 import { MsMineComponent } from './presentations/icon/ms-mine/ms-mine.component';
+import { MsLongTapDirective } from './directives/ms-long-tap/ms-long-tap.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MsMineComponent } from './presentations/icon/ms-mine/ms-mine.component'
     MsFieldComponent,
     MsCellComponent,
     MsFlagComponent,
-    MsMineComponent
+    MsMineComponent,
+    MsLongTapDirective
   ],
   imports: [
     BrowserModule,

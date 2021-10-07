@@ -1,13 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { timer, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ms-cell',
   templateUrl: './ms-cell.component.html',
   styleUrls: ['./ms-cell.component.scss']
 })
-export class MsCellComponent implements OnInit {
+export class MsCellComponent {
 
   /** 周囲の地雷数 */
   @Input() count: number = 0;
@@ -26,28 +24,6 @@ export class MsCellComponent implements OnInit {
 
   /** 右クリック */
   @Output() rightClick = new EventEmitter();
-
-  /** 長押し判定時間（ミリ秒） */
-  private readonly LONG_TAP_MSEC = 500;
-
-  private mouseDown$ = new Subject();
-  private mouseUp$ = new Subject();
-  private touchStart$ = new Subject();
-  private touchEnd$ = new Subject();
-
-  public ngOnInit(): void {
-    this.mouseDown$.subscribe(() => {
-      timer(this.LONG_TAP_MSEC)
-        .pipe(takeUntil(this.mouseUp$))
-        .subscribe(() => this.rightClick.emit());
-    });
-
-    this.touchStart$.subscribe(() => {
-      timer(this.LONG_TAP_MSEC)
-        .pipe(takeUntil(this.touchEnd$))
-        .subscribe(() => this.rightClick.emit());
-    });
-  }
 
   /**
    * セルの状態に応じたクラスの配列
@@ -76,8 +52,10 @@ export class MsCellComponent implements OnInit {
    * 左クリック
    * @param $event ネイティブイベント
    */
-  onLeftClick($event: Event) {
-    $event.stopPropagation();
+  onLeftClick($event?: Event) {
+    if ($event) {
+      $event.stopPropagation();
+    }
     this.leftClick.emit();
   }
 
@@ -85,25 +63,12 @@ export class MsCellComponent implements OnInit {
    * 右クリック
    * @param $event ネイティブイベント
    */
-  onRightClick($event: Event) {
-    $event.stopPropagation();
-    $event.preventDefault();
+  onRightClick($event?: Event) {
+    if ($event) {
+      $event.stopPropagation();
+      $event.preventDefault();
+    }
     this.rightClick.emit();
   }
 
-  onMouseDown() {
-    this.mouseDown$.next();
-  }
-
-  onMouseUp() {
-    this.mouseUp$.next();
-  }
-
-  onTouchStart() {
-    this.touchStart$.next();
-  }
-
-  onTouchEnd() {
-    this.touchEnd$.next();
-  }
 }

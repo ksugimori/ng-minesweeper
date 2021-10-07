@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MsLongTapDirective } from 'src/app/directives/ms-long-tap/ms-long-tap.directive';
 
 import { MsCellComponent } from './ms-cell.component';
 
@@ -8,9 +9,11 @@ describe('MsCellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MsCellComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        MsCellComponent,
+        MsLongTapDirective
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -25,7 +28,7 @@ describe('MsCellComponent', () => {
   });
 
   describe('#cssClassArray', () => {
-    it ('デフォルトで cell クラスのみセットされていること', () => {
+    it('デフォルトで cell クラスのみセットされていること', () => {
       expect(component.cssClassArray.length).toBe(1);
       expect(component.cssClassArray).toContain('cell');
     });
