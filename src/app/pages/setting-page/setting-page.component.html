@@ -1,1 +1,14 @@
-<p>setting-page works!</p>
+<h2>Preset</h2>
+
+<div class="button-list">
+  <ms-button
+    *ngFor="let s of presetList"
+    [active]="s.equals(setting)"
+    (clickButton)="update(s)"
+  >{{ s.name | uppercase }}</ms-button>
+</div>
+
+<h2>Custom</h2>
+<p>{{ setting.width }}</p>
+<p>{{ setting.height }}</p>
+<p>{{ setting.numMines }}</p>

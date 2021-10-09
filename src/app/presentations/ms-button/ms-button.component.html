@@ -1,3 +1,6 @@
-<button (click)="onClick($event)">
+<button
+  (click)="onClick($event)"
+  [class.active]="active"
+>
   <ng-content></ng-content>
 </button>
