@@ -22,21 +22,27 @@ export class MsLongTapDirective implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
-    this.subscriptions.add(this.mouseDown$.subscribe(() => {
-      timer(this.threshold)
-        .pipe(takeUntil(this.mouseUp$))
-        .subscribe(() => this.longTap.emit());
-    }));
+    const mouse = this.mouseDown$.subscribe(() => this.emitIfNot(this.mouseUp$));
+    this.subscriptions.add(mouse);
 
-    this.subscriptions.add(this.touchStart$.subscribe(() => {
-      timer(this.threshold)
-        .pipe(takeUntil(this.touchEnd$))
-        .subscribe(() => this.longTap.emit());
-    }));
+    const touch = this.touchStart$.subscribe(() => this.emitIfNot(this.touchEnd$));
+    this.subscriptions.add(touch);
   }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  /**
+   * threshold 経過後に longTap イベントを発火する。
+   * 
+   * ただし、発火前に stopper に値が流された場合は処理を中断します。
+   * @param stopper イベント発火を中止するサブジェクト
+   */
+  private emitIfNot(stopper: Subject<any>) {
+    timer(this.threshold)
+      .pipe(takeUntil(stopper))
+      .subscribe(() => this.longTap.emit());
   }
 
   @HostListener('mousedown') onMouseDown() {
