@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { GameService } from './game.service';
+import { Setting } from './models/Setting';
 import { Status } from './models/status/Status';
 
 describe('GameService', () => {
@@ -71,6 +72,25 @@ describe('GameService', () => {
       expect(after.status).toEqual(Status.INIT);
       expect(after.flagCount).toBe(0);
       // expect(after.closedCount).toBe(81);
+    });
+  });
+
+  describe('#updateSetting', () => {
+    it('Setting が更新できること', () => {
+      // まず１つ開いてゲームを開始する
+      service.open(0, 0);
+
+      // この時点でステータスは PLAY
+      const before = service.getGame();
+      expect(before.status).toEqual(Status.PLAY);
+
+      // Setting を変更
+      service.updateSetting(Setting.HARD);
+
+      // ステータスが INIT になり、設定が上書きされていること
+      const after = service.getGame();
+      expect(after.status).toEqual(Status.INIT);
+      expect(after.setting.width).toBe(30);
     });
   });
 });

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Game } from './models/Game';
+import { Setting } from './models/Setting';
 
 /**
  * ゲーム情報の保持、操作を行うサービス。
@@ -52,7 +53,7 @@ export class GameService {
    * @param x x座標
    * @param y y座標
    */
-   public open(x: number, y: number): void {
+  public open(x: number, y: number): void {
     this.game.open(x, y);
   }
 
@@ -61,7 +62,20 @@ export class GameService {
    * @param x x座標
    * @param y y座標
    */
-   public flag(x: number, y: number): void {
+  public flag(x: number, y: number): void {
     this.game.flag(x, y);
+  }
+
+  /**
+   * Setting を更新する。
+   * 
+   * ゲームのプレイ状況はリセットされます。
+   * @param setting Setting
+   */
+  updateSetting(setting: Setting) {
+    const updated = this.game.setting.clone();
+    updated.merge(setting);
+    this.game.setting = updated;
+    this.game.initialize();
   }
 }
