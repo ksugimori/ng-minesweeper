@@ -1,4 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { first } from 'rxjs/operators';
 import { MsLongTapDirective } from 'src/app/directives/ms-long-tap/ms-long-tap.directive';
 
 import { MsCellComponent } from './ms-cell.component';
@@ -62,4 +64,69 @@ describe('MsCellComponent', () => {
       expect(component.cssClassArray).toContain('cell-mine');
     });
   });
+
+  describe('#onLeftClick', () => {
+    it('左クリックすると leftClick イベントが発火されること', () => {
+      let isLeftClickFired = false;
+      let isRightClickFired = false;
+
+      // leftClick, rightClick が発火されたらフラグを立てる
+      component.leftClick.pipe(first()).subscribe(() => isLeftClickFired = true);
+      component.rightClick.pipe(first()).subscribe(() => isRightClickFired = true);
+
+      // クリック
+      let div = fixture.debugElement.query(By.css('.cell')).nativeElement;
+      div.click();
+
+      // 検証
+      expect(isLeftClickFired).toBeTrue();
+      expect(isRightClickFired).toBeFalse();
+    });
+  });
+
+  describe('#onRightClick', () => {
+    it('右クリックすると rightClick イベントが発火されること', () => {
+      let isLeftClickFired = false;
+      let isRightClickFired = false;
+
+      // leftClick, rightClick が発火されたらフラグを立てる
+      component.leftClick.pipe(first()).subscribe(() => isLeftClickFired = true);
+      component.rightClick.pipe(first()).subscribe(() => isRightClickFired = true);
+
+      // クリック
+      let div = fixture.debugElement.query(By.css('.cell'));
+      div.triggerEventHandler('contextmenu', null);
+
+      // 検証
+      expect(isLeftClickFired).toBeFalse();
+      expect(isRightClickFired).toBeTrue();
+    });
+  });
+
+  it('500 ミリ秒以上の長押しで rightClick イベントが発火されること', fakeAsync(() => {
+    let isRightClickFired = false;
+
+    // rightClick が発火されたらフラグを立てる
+    component.rightClick.pipe(first()).subscribe(() => isRightClickFired = true);
+
+    let div = fixture.debugElement.query(By.css('.cell'));
+
+    //
+    // 499 ミリ秒では発火されないこと
+    //
+    div.triggerEventHandler('touchstart', null);
+    tick(499);
+    div.triggerEventHandler('touchend', null);
+
+    expect(isRightClickFired).toBeFalse();
+
+    //
+    // 500 ミリ秒では発火されること
+    //
+    div.triggerEventHandler('touchstart', null);
+    tick(500);
+    div.triggerEventHandler('touchend', null);
+
+    expect(isRightClickFired).toBeTrue();
+  }));
 });
