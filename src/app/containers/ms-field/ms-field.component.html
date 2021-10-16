@@ -1,12 +1,16 @@
 <div class="field">
-  <div *ngFor="let row of rows; let y = index"
-       class="row">
-    <ms-cell *ngFor="let cell of row; let x = index"
-             [count]="cell.count"
-             [isOpen]="isGameEnd || cell.isOpen"
-             [isFlag]="cell.isFlag"
-             [isMine]="isGameEnd && cell.isMine"
-             (leftClick)="onLeftClickCell(x, y)"
-             (rightClick)="onRightClickCell(x, y)"></ms-cell>
+  <div
+    *ngFor="let row of rows; let y = index"
+    class="row"
+  >
+    <ms-cell
+      *ngFor="let cell of row; let x = index"
+      [count]="cell.count"
+      [isOpen]="isGameEnd || cell.isOpen"
+      [isFlag]="cell.isFlag"
+      [isMine]="isGameEnd && cell.isMine"
+      (leftClick)="onLeftClickCell(x, y)"
+      (rightClick)="onRightClickCell(x, y)"
+    ></ms-cell>
   </div>
 </div>

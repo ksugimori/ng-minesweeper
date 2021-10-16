@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MsButtonComponent } from 'src/app/presentations/ms-button/ms-button.component';
 
 import { SettingPageComponent } from './setting-page.component';
 
@@ -8,9 +9,11 @@ describe('SettingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingPageComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        SettingPageComponent,
+        MsButtonComponent
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {
