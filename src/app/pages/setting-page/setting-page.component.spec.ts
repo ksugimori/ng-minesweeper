@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { MsButtonComponent } from 'src/app/presentations/ms-button/ms-button.component';
+import { MsNumberInputComponent } from 'src/app/presentations/ms-number-input/ms-number-input.component';
 
 import { SettingPageComponent } from './setting-page.component';
 
@@ -9,9 +11,11 @@ describe('SettingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [
         SettingPageComponent,
-        MsButtonComponent
+        MsButtonComponent,
+        MsNumberInputComponent
       ]
     }).compileComponents();
   });

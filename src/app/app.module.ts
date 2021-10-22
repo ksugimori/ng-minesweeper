@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { MsButtonComponent } from './presentations/ms-button/ms-button.component
 import { MsCellComponent } from './presentations/ms-cell/ms-cell.component';
 import { MsFlagComponent } from './presentations/icon/ms-flag/ms-flag.component';
 import { MsMineComponent } from './presentations/icon/ms-mine/ms-mine.component';
+import { MsNumberInputComponent } from './presentations/ms-number-input/ms-number-input.component';
 import { MsLongTapDirective } from './directives/ms-long-tap/ms-long-tap.directive';
 
 @NgModule({
@@ -28,11 +30,13 @@ import { MsLongTapDirective } from './directives/ms-long-tap/ms-long-tap.directi
     MsCellComponent,
     MsFlagComponent,
     MsMineComponent,
-    MsLongTapDirective
+    MsLongTapDirective,
+    MsNumberInputComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

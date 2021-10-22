@@ -1,0 +1,38 @@
+@import '../../../variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20.4rem;
+  margin: 1rem auto 0.15rem auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputTag {
+  -webkit-appearance: textfield;
+  border-radius: 0;
+  -moz-appearance: textfield;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+
+  font-size: 1.5rem;
+  width: 6.6rem;
+  padding: 0.5rem;
+  border: 0.3rem solid $main-color;
+  margin: 0 0.3rem;
+  background-color: #fff;
+  color: $main-color;
+  border-radius: 2px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: right;
+}

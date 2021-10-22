@@ -1,0 +1,11 @@
+<ms-button (clickButton)="decrement()">-</ms-button>
+<input
+  #inputTag
+  type="text"
+  class="inputTag"
+  max="max"
+  name="inputTag"
+  [(ngModel)]="value"
+  (change)="update(inputTag.value)"
+>
+<ms-button (clickButton)="increment()">+</ms-button>
