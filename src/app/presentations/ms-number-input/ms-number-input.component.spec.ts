@@ -10,6 +10,28 @@ describe('MsNumberInputComponent', () => {
   let fixture: ComponentFixture<MsNumberInputComponent>;
   let inputTag: HTMLInputElement; // コンポーネント内の input タグ
 
+  /**
+   * +/- ボタンをクリックする。
+   * @param selector ボタンを特定するための CSS セレクタ
+   */
+  function clickButton(selector: string) {
+    fixture.debugElement.query(By.css(selector)).triggerEventHandler('clickButton', null);
+    fixture.detectChanges();
+    tick();
+  }
+
+  /**
+   * input タグの値を変更する。
+   * @param newValue 変更語の値
+   */
+  function changeInputValue(newValue: string) {
+    inputTag.value = newValue;
+
+    fixture.debugElement.query(By.css('input')).triggerEventHandler('change', null);
+    fixture.detectChanges();
+    tick();
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -33,9 +55,7 @@ describe('MsNumberInputComponent', () => {
       fixture.detectChanges();
 
       // + ボタンをクリック
-      fixture.debugElement.query(By.css('.plus')).triggerEventHandler('clickButton', null);
-      fixture.detectChanges();
-      tick();
+      clickButton('.plus');
 
       // 検証
       expect(component.value).toBe(6);
@@ -49,9 +69,7 @@ describe('MsNumberInputComponent', () => {
       fixture.detectChanges();
 
       // + ボタンをクリック
-      fixture.debugElement.query(By.css('.plus')).triggerEventHandler('clickButton', null);
-      fixture.detectChanges();
-      tick();
+      clickButton('.plus');
 
       // 検証
       expect(component.value).toBe(100); // 101 になってないこと
@@ -66,10 +84,8 @@ describe('MsNumberInputComponent', () => {
       component.value = 5;
       fixture.detectChanges();
 
-      // + ボタンをクリック
-      fixture.debugElement.query(By.css('.minus')).triggerEventHandler('clickButton', null);
-      fixture.detectChanges();
-      tick();
+      // - ボタンをクリック
+      clickButton('.minus');
 
       // 検証
       expect(component.value).toBe(4);
@@ -82,10 +98,8 @@ describe('MsNumberInputComponent', () => {
       component.value = 5;
       fixture.detectChanges();
 
-      // + ボタンをクリック
-      fixture.debugElement.query(By.css('.minus')).triggerEventHandler('clickButton', null);
-      fixture.detectChanges();
-      tick();
+      // - ボタンをクリック
+      clickButton('.minus');
 
       // 検証
       expect(component.value).toBe(5); // 4 になってないこと
@@ -100,10 +114,7 @@ describe('MsNumberInputComponent', () => {
       fixture.detectChanges();
 
       // input タグへの入力
-      inputTag.value = '1a2X3';
-      fixture.debugElement.query(By.css('input')).triggerEventHandler('change', null);
-      fixture.detectChanges();
-      tick();
+      changeInputValue('1a2X3');
 
       // 検証
       expect(component.value).toBe(123);
@@ -115,10 +126,7 @@ describe('MsNumberInputComponent', () => {
       fixture.detectChanges();
 
       // input タグへの入力
-      inputTag.value = 'without-number';
-      fixture.debugElement.query(By.css('input')).triggerEventHandler('change', null);
-      fixture.detectChanges();
-      tick();
+      changeInputValue('not-a-number');
 
       // 検証
       expect(component.value).toBe(9);
