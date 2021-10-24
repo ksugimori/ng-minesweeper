@@ -16,11 +16,6 @@ export class MsNumberInputComponent {
   /** 値の変更イベント */
   @Output() valueChange = new EventEmitter<number>();
 
-  private setValue(value: number) {
-    this.value;
-    this.valueChange.emit(value);
-  }
-
   /** 最小値。デフォルト 0 */
   @Input() min = 0;
 
@@ -33,7 +28,7 @@ export class MsNumberInputComponent {
    * 数字以外の文字は除外して integer として value を更新します。
    * @param rawValue input タグに入力されている値
    */
-  update(rawValue: string) {
+  public update(rawValue: string) {
 
     const intValue = parseInt(rawValue.replace(/[^0-9]/g, ''));
 
@@ -57,6 +52,19 @@ export class MsNumberInputComponent {
    */
   public decrement() {
     this.setValue(this.adjust(this.value - 1));
+  }
+
+  // ------------------------------------------------------------
+  // private
+  // ------------------------------------------------------------
+
+  /**
+   * 値を更新する
+   * @param value 値
+   */
+  private setValue(value: number) {
+    this.value = value;
+    this.valueChange.emit(value);
   }
 
   /**
