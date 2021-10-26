@@ -1,6 +1,7 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { MsLongTapDirective } from 'src/app/directives/ms-long-tap/ms-long-tap.directive';
 import { MsButtonComponent } from '../ms-button/ms-button.component';
 
 import { MsNumberInputComponent } from './ms-number-input.component';
@@ -35,7 +36,7 @@ describe('MsNumberInputComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [MsNumberInputComponent, MsButtonComponent]
+      declarations: [MsNumberInputComponent, MsButtonComponent, MsLongTapDirective]
     })
       .compileComponents();
   });

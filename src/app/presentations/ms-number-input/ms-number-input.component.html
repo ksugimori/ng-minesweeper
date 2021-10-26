@@ -1,6 +1,8 @@
 <ms-button
   class="minus"
   (clickButton)="decrement()"
+  [msLongTap]="500"
+  (hold)="decrement()"
 >-</ms-button>
 <input
   #inputTag
@@ -14,4 +16,6 @@
 <ms-button
   class="plus"
   (clickButton)="increment()"
+  [msLongTap]="500"
+  (hold)="increment()"
 >+</ms-button>

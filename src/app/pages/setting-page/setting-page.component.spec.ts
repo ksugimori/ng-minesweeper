@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { MsLongTapDirective } from 'src/app/directives/ms-long-tap/ms-long-tap.directive';
 import { MsButtonComponent } from 'src/app/presentations/ms-button/ms-button.component';
 import { MsNumberInputComponent } from 'src/app/presentations/ms-number-input/ms-number-input.component';
 
@@ -15,7 +16,8 @@ describe('SettingPageComponent', () => {
       declarations: [
         SettingPageComponent,
         MsButtonComponent,
-        MsNumberInputComponent
+        MsNumberInputComponent,
+        MsLongTapDirective
       ]
     }).compileComponents();
   });
