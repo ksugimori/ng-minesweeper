@@ -4,8 +4,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 20.4rem;
-  margin: 1rem auto 0.15rem auto;
+  width: 15rem;
+
+  ::ng-deep button {
+    height: 100%;
+    width: 4rem !important;
+  }
 }
 
 input::-webkit-outer-spin-button,

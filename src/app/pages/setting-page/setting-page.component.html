@@ -9,21 +9,27 @@
 </div>
 
 <h2>Custom</h2>
-<ms-number-input
-  [(value)]="setting.width"
-  [min]="1"
-  [max]="100"
-></ms-number-input>
-<ms-number-input
-  [(value)]="setting.height"
-  [min]="1"
-  [max]="100"
-></ms-number-input>
-<ms-number-input
-  [(value)]="setting.numMines"
-  [min]="1"
-  [max]="100"
-></ms-number-input>
-<p>{{ setting.width }}</p>
-<p>{{ setting.height }}</p>
-<p>{{ setting.numMines }}</p>
+<div class="row">
+  <span>Width</span>
+  <ms-number-input
+    [(value)]="setting.width"
+    [min]="1"
+    [max]="100"
+  ></ms-number-input>
+</div>
+<div class="row">
+  <span>Height</span>
+  <ms-number-input
+    [(value)]="setting.height"
+    [min]="1"
+    [max]="100"
+  ></ms-number-input>
+</div>
+<div class="row">
+  <span>Mines</span>
+  <ms-number-input
+    [(value)]="setting.numMines"
+    [min]="1"
+    [max]="100"
+  ></ms-number-input>
+</div>
